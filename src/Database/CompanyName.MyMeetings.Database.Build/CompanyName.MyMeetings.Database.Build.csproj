@@ -1,0 +1,9 @@
+<Project Sdk="MSBuild.Sdk.SqlProj/2.4.0">
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ProduceReferenceAssembly>false</ProduceReferenceAssembly> 
+    </PropertyGroup>
+    <ItemGroup>
+        <Content Include="..\CompanyName.MyMeetings.Database\Structure\**\*.sql" />
+    </ItemGroup>
+</Project>
