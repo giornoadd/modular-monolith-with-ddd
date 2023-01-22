@@ -23,6 +23,7 @@ namespace CompanyNames.MyMeetings.Modules.UserAccess.IntegrationTests.Users
                 UserRegistrationSampleData.FirstName,
                 UserRegistrationSampleData.LastName,
                 "confirmLink"));
+
             await UserAccessModule.ExecuteCommandAsync(new ConfirmUserRegistrationCommand(registrationId));
 
             var user = await UserAccessModule.ExecuteQueryAsync(new GetUserQuery(registrationId));

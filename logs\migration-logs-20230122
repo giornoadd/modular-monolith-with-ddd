@@ -1,0 +1,661 @@
+{"@t":"2023-01-22T02:25:27.5467300Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T02:25:27.7937300Z","@mt":"Upgrade failed due to an unexpected exception:\r\n{0}","@l":"Error","0":"Microsoft.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 35 - An internal exception was caught)\n ---> System.Security.Authentication.AuthenticationException: The remote certificate was rejected by the provided RemoteCertificateValidationCallback.\n   at System.Net.Security.SslStream.SendAuthResetSignal(ProtocolToken message, ExceptionDispatchInfo exception)\n   at System.Net.Security.SslStream.CompleteHandshake(SslAuthenticationOptions sslAuthenticationOptions)\n   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)\n   at System.Net.Security.SslStream.AuthenticateAsClient(SslClientAuthenticationOptions sslClientAuthenticationOptions)\n   at Microsoft.Data.SqlClient.SNI.SNITCPHandle.EnableSsl(UInt32 options)\n   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)\n   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)\n   at Microsoft.Data.SqlClient.TdsParser.EnableSsl(UInt32 info, SqlConnectionEncryptOption encrypt, Boolean integratedSecurity)\n   at Microsoft.Data.SqlClient.TdsParser.ConsumePreLoginHandshake(SqlConnectionEncryptOption encrypt, Boolean trustServerCert, Boolean integratedSecurity, Boolean& marsCapable, Boolean& fedAuthRequired, Boolean tlsFirst)\n   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)\n   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)\n   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)\n   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)\n   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)\n   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)\n   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)\n   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)\n   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)\n   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)\n   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)\n   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)\n   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)\n   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)\n   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)\n   at Microsoft.Data.SqlClient.SqlConnection.Open(SqlConnectionOverrides overrides)\n   at Microsoft.Data.SqlClient.SqlConnection.Open()\n   at DbUp.Engine.Transactions.DatabaseConnectionManager.OperationStarting(IUpgradeLog upgradeLog, List`1 executedScripts) in /_/src/dbup-core/Engine/Transactions/DatabaseConnectionManager.cs:line 49\n   at DbUp.Engine.UpgradeEngine.PerformUpgrade() in /_/src/dbup-core/Engine/UpgradeEngine.cs:line 66\nClientConnectionId:7e48f341-70ad-4183-b019-a93c11b3f09b\nError Number:-2146893019,State:0,Class:20"}
+{"@t":"2023-01-22T02:25:27.7952410Z","@mt":"Migration failed"}
+{"@t":"2023-01-22T02:33:05.8171820Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T02:33:06.0017740Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T02:33:06.0026070Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T02:33:06.0741520Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T02:33:06.0860430Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T02:33:06.0889390Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T02:33:06.0906720Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T02:33:06.0969540Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T02:33:06.2850740Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T02:33:06.2956150Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T02:33:06.3018240Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T02:33:06.3075650Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T02:33:06.3137470Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T02:33:06.3187380Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T02:33:06.3245270Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T02:33:06.3297610Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T02:33:06.3353210Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T02:33:06.3391720Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T02:33:06.3453440Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T02:33:06.3492770Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T02:33:06.3542130Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T02:33:06.3564770Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T02:35:31.8598310Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T02:35:32.0605140Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T02:35:32.0613370Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T02:35:32.1265940Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T02:35:32.1379420Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T02:35:32.1409590Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T02:35:32.1440350Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T02:35:32.1495500Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T02:35:32.3182610Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T02:35:32.3307190Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T02:35:32.3378390Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T02:35:32.3479980Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T02:35:32.3566900Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T02:35:32.3661540Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T02:35:32.3755540Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T02:35:32.3841650Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T02:35:32.3915420Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T02:35:32.3986580Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T02:35:32.4049640Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T02:35:32.4118500Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T02:35:32.4183660Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T02:35:32.4205940Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T02:39:58.2566990Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T02:39:58.5342520Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T02:39:58.5352240Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T02:39:58.6432280Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T02:39:58.6681630Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T02:39:58.6714260Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T02:39:58.6744690Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T02:39:58.6838850Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T02:39:58.9760100Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T02:39:58.9887510Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T02:39:59.0043150Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T02:39:59.0141270Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T02:39:59.0234700Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T02:39:59.0376570Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T02:39:59.0515220Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T02:39:59.0590240Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T02:39:59.0681660Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T02:39:59.0737470Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T02:39:59.0826060Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T02:39:59.0951280Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T02:39:59.1059390Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T02:39:59.1085810Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T02:46:23.7909890Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T02:46:23.9931140Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T02:46:23.9939360Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T02:46:24.0691140Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T02:46:24.0842970Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T02:46:24.0875140Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T02:46:24.0897540Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T02:46:24.0973780Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T02:46:24.2638760Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T02:46:24.2837580Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T02:46:24.2982730Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T02:46:24.3036120Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T02:46:24.3117880Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T02:46:24.3184440Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T02:46:24.3261770Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T02:46:24.3341620Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T02:46:24.3421490Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T02:46:24.3481110Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T02:46:24.3563060Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T02:46:24.3638260Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T02:46:24.3710990Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T02:46:24.3735200Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T02:48:13.6335930Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T02:48:13.8198080Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T02:48:13.8206320Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T02:48:13.9005510Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T02:48:13.9137020Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T02:48:13.9170700Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T02:48:13.9186300Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T02:48:13.9245620Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T02:48:14.0947570Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T02:48:14.1049900Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T02:48:14.1124210Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T02:48:14.1176880Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T02:48:14.1232380Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T02:48:14.1290090Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T02:48:14.1338930Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T02:48:14.1389870Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T02:48:14.1454310Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T02:48:14.1490480Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T02:48:14.1532340Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T02:48:14.1586690Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T02:48:14.1639870Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T02:48:14.1661450Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T02:50:12.8049930Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T02:50:13.0341850Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T02:50:13.0349530Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T02:50:13.1202290Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T02:50:13.1335850Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T02:50:13.1367760Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T02:50:13.1385500Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T02:50:13.1444060Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T02:50:13.3137060Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T02:50:13.3228950Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T02:50:13.3295560Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T02:50:13.3351560Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T02:50:13.3408800Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T02:50:13.3459150Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T02:50:13.3507300Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T02:50:13.3550750Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T02:50:13.3613710Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T02:50:13.3648380Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T02:50:13.3689780Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T02:50:13.3730270Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T02:50:13.3781410Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T02:50:13.3840310Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T02:59:31.3811690Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T02:59:31.5849990Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T02:59:31.5858920Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T02:59:31.6072770Z","@mt":"Fetching list of already executed scripts."}
+{"@t":"2023-01-22T02:59:31.6249130Z","@mt":"No new scripts need to be executed - completing."}
+{"@t":"2023-01-22T02:59:31.6272230Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T03:03:01.1555430Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T03:03:01.3498420Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T03:03:01.3506530Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:03:01.3691420Z","@mt":"Fetching list of already executed scripts."}
+{"@t":"2023-01-22T03:03:01.3786870Z","@mt":"No new scripts need to be executed - completing."}
+{"@t":"2023-01-22T03:03:01.3805910Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T03:04:39.0548920Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T03:04:39.2350710Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T03:04:39.2358890Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:04:39.2545370Z","@mt":"Fetching list of already executed scripts."}
+{"@t":"2023-01-22T03:04:39.2656250Z","@mt":"No new scripts need to be executed - completing."}
+{"@t":"2023-01-22T03:04:39.2674940Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T03:10:11.0316760Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T03:10:11.2250010Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T03:10:11.2258190Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:10:11.2487570Z","@mt":"Fetching list of already executed scripts."}
+{"@t":"2023-01-22T03:10:11.2612280Z","@mt":"No new scripts need to be executed - completing."}
+{"@t":"2023-01-22T03:10:11.2631910Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T03:11:54.8666490Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T03:11:55.0438020Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T03:11:55.0445860Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:11:55.0611220Z","@mt":"Fetching list of already executed scripts."}
+{"@t":"2023-01-22T03:11:55.0694680Z","@mt":"No new scripts need to be executed - completing."}
+{"@t":"2023-01-22T03:11:55.0713000Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T03:13:48.7687340Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T03:13:48.9615350Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T03:13:48.9624090Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:13:48.9811590Z","@mt":"Fetching list of already executed scripts."}
+{"@t":"2023-01-22T03:13:48.9914820Z","@mt":"No new scripts need to be executed - completing."}
+{"@t":"2023-01-22T03:13:48.9933560Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T03:26:51.1259150Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T03:26:51.3227670Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T03:26:51.3236410Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:26:51.3928790Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T03:26:51.4038800Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T03:26:51.4068490Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:26:51.4090570Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T03:26:51.4156250Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T03:26:51.6000190Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:26:51.6098980Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T03:26:51.6164740Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T03:26:51.6217770Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T03:26:51.6283300Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T03:26:51.6331610Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T03:26:51.6386080Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T03:26:51.6443340Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T03:26:51.6492090Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T03:26:51.6533510Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T03:26:51.6604290Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:26:51.6649740Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T03:26:51.6701510Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T03:26:51.6724610Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T03:36:29.1202240Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T03:36:29.3302920Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T03:36:29.3311340Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:36:29.4209870Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T03:36:29.4315860Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T03:36:29.4346630Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:36:29.4368380Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T03:36:29.4450130Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T03:36:29.6600640Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:36:29.6746130Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T03:36:29.6819750Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T03:36:29.7018790Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T03:36:29.7121210Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T03:36:29.7217100Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T03:36:29.7330460Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T03:36:29.7516240Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T03:36:29.7665640Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T03:36:29.7771290Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T03:36:29.7838870Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:36:29.7926760Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T03:36:29.7993330Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T03:36:29.8015720Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T03:37:43.9673800Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T03:37:44.1582040Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T03:37:44.1590280Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:37:44.2345480Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T03:37:44.2477070Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T03:37:44.2510550Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:37:44.2529120Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T03:37:44.2592990Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T03:37:44.4228670Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:37:44.4322530Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T03:37:44.4404060Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T03:37:44.4459480Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T03:37:44.4515210Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T03:37:44.4581720Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T03:37:44.4636840Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T03:37:44.4687730Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T03:37:44.4752930Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T03:37:44.4788740Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T03:37:44.4836180Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:37:44.4887760Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T03:37:44.4944060Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T03:37:44.4965420Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T03:45:58.1459190Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T03:45:58.3290540Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T03:45:58.3298680Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:45:58.4086360Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T03:45:58.4218530Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T03:45:58.4253710Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:45:58.4274240Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T03:45:58.4339270Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T03:45:58.5972460Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:45:58.6073470Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T03:45:58.6153990Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T03:45:58.6209560Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T03:45:58.6282660Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T03:45:58.6335750Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T03:45:58.6386800Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T03:45:58.6454100Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T03:45:58.6503610Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T03:45:58.6540250Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T03:45:58.6596880Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:45:58.6642520Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T03:45:58.6717840Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T03:45:58.6740950Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T03:47:48.4947330Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T03:47:48.6650040Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T03:47:48.6658250Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:47:48.7411360Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T03:47:48.7566060Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T03:47:48.7611950Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:47:48.7631580Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T03:47:48.7681800Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T03:47:48.9262530Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:47:48.9354900Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T03:47:48.9434540Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T03:47:48.9484390Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T03:47:48.9537380Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T03:47:48.9597020Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T03:47:48.9651220Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T03:47:48.9705820Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T03:47:48.9780910Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T03:47:48.9817380Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T03:47:48.9860870Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:47:48.9906590Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T03:47:48.9963670Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T03:47:48.9985560Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T03:48:56.2471920Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T03:48:56.4370870Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T03:48:56.4379180Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:48:56.5071020Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T03:48:56.5181140Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T03:48:56.5210150Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:48:56.5226690Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T03:48:56.5288430Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T03:48:56.6867910Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:48:56.6957890Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T03:48:56.7040600Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T03:48:56.7105890Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T03:48:56.7162230Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T03:48:56.7213510Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T03:48:56.7277460Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T03:48:56.7326940Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T03:48:56.7375960Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T03:48:56.7423740Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T03:48:56.7487020Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:48:56.7534220Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T03:48:56.7597070Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T03:48:56.7621180Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T03:49:49.8898020Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T03:49:50.0739700Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T03:49:50.0747730Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:49:50.1282320Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T03:49:50.1404630Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T03:49:50.1437180Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:49:50.1457390Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T03:49:50.1516430Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T03:49:50.3259700Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:49:50.3375170Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T03:49:50.3469180Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T03:49:50.3536080Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T03:49:50.3625740Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T03:49:50.3684940Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T03:49:50.3733710Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T03:49:50.3790060Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T03:49:50.3840010Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T03:49:50.3874580Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T03:49:50.3936560Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:49:50.3980050Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T03:49:50.4029310Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T03:49:50.4051660Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T03:50:38.3358720Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T03:50:38.5342530Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T03:50:38.5350760Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:50:38.5980730Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T03:50:38.6115060Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T03:50:38.6147260Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:50:38.6162850Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T03:50:38.6215360Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T03:50:38.7918130Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:50:38.8029120Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T03:50:38.8139560Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T03:50:38.8194130Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T03:50:38.8272310Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T03:50:38.8327960Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T03:50:38.8375930Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T03:50:38.8447360Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T03:50:38.8500230Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T03:50:38.8534020Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T03:50:38.8595300Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:50:38.8648230Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T03:50:38.8697960Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T03:50:38.8720730Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T03:51:18.3278940Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T03:51:18.5217640Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T03:51:18.5226700Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:51:18.6041820Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T03:51:18.6176900Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T03:51:18.6208900Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:51:18.6229080Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T03:51:18.6295260Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T03:51:18.8417340Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:51:18.8511920Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T03:51:18.8602730Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T03:51:18.8661590Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T03:51:18.8719560Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T03:51:18.8793050Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T03:51:18.8846640Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T03:51:18.8901800Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T03:51:18.8983310Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T03:51:18.9025940Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T03:51:18.9086430Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:51:18.9142160Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T03:51:18.9197660Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T03:51:18.9220130Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T03:52:01.9925380Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T03:52:02.1789200Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T03:52:02.1797350Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:52:02.2503440Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T03:52:02.2635710Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T03:52:02.2669290Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:52:02.2685700Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T03:52:02.2746560Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T03:52:02.4412830Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:52:02.4505000Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T03:52:02.4582850Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T03:52:02.4639750Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T03:52:02.4695970Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T03:52:02.4757660Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T03:52:02.4806560Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T03:52:02.4855150Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T03:52:02.4919220Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T03:52:02.4959480Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T03:52:02.5003900Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:52:02.5045940Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T03:52:02.5110300Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T03:52:02.5132090Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T03:53:07.4622460Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T03:53:07.6442810Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T03:53:07.6450770Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:53:07.7247010Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T03:53:07.7378400Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T03:53:07.7412010Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:53:07.7429020Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T03:53:07.7481090Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T03:53:07.9111910Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:53:07.9207780Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T03:53:07.9281480Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T03:53:07.9334300Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T03:53:07.9398830Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T03:53:07.9447670Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T03:53:07.9498620Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T03:53:07.9550050Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T03:53:07.9613560Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T03:53:07.9647070Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T03:53:07.9693290Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:53:07.9741890Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T03:53:07.9797440Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T03:53:07.9818920Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T03:55:22.3585580Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T03:55:22.5373260Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T03:55:22.5380840Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:55:22.6071710Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T03:55:22.6208520Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T03:55:22.6243670Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:55:22.6261000Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T03:55:22.6316280Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T03:55:22.7967250Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:55:22.8058850Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T03:55:22.8126580Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T03:55:22.8177760Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T03:55:22.8249910Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T03:55:22.8296480Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T03:55:22.8345000Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T03:55:22.8403270Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T03:55:22.8462060Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T03:55:22.8496380Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T03:55:22.8543670Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:55:22.8595450Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T03:55:22.8649420Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T03:55:22.8670990Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T03:56:07.6736700Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T03:56:07.8552910Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T03:56:07.8561010Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:56:07.9332810Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T03:56:07.9465920Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T03:56:07.9499720Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:56:07.9517070Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T03:56:07.9575510Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T03:56:08.1212580Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:56:08.1316200Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T03:56:08.1412230Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T03:56:08.1487760Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T03:56:08.1560690Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T03:56:08.1614170Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T03:56:08.1664190Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T03:56:08.1723380Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T03:56:08.1777420Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T03:56:08.1816470Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T03:56:08.1865120Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:56:08.1919230Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T03:56:08.1967360Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T03:56:08.1989350Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T03:57:07.1036630Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T03:57:07.3093900Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T03:57:07.3102230Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:57:07.3885280Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T03:57:07.4000140Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T03:57:07.4029360Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T03:57:07.4046420Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T03:57:07.4108340Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T03:57:07.5868720Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:57:07.5954260Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T03:57:07.6024420Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T03:57:07.6110400Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T03:57:07.6188550Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T03:57:07.6250010Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T03:57:07.6309900Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T03:57:07.6376790Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T03:57:07.6440200Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T03:57:07.6476300Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T03:57:07.6516840Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T03:57:07.6556850Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T03:57:07.6603030Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T03:57:07.6665470Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T04:59:22.2365350Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T04:59:22.4191180Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T04:59:22.4199460Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T04:59:22.4870670Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T04:59:22.5016080Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T04:59:22.5050500Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T04:59:22.5067600Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T04:59:22.5137930Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T04:59:22.7113110Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T04:59:22.7233110Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T04:59:22.7294880Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T04:59:22.7368840Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T04:59:22.7425350Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T04:59:22.7478600Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T04:59:22.7545780Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T04:59:22.7591770Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T04:59:22.7650250Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T04:59:22.7696330Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T04:59:22.7746860Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T04:59:22.7786300Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T04:59:22.7851360Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T04:59:22.7874560Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T05:06:15.0821170Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T05:06:15.3286330Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T05:06:15.3295820Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T05:06:15.4448030Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T05:06:15.4568570Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T05:06:15.4604530Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T05:06:15.4628780Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T05:06:15.4705550Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T05:06:15.6380990Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T05:06:15.6481700Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T05:06:15.6556020Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T05:06:15.6608940Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T05:06:15.6673560Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T05:06:15.6725470Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T05:06:15.6778880Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T05:06:15.6840280Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T05:06:15.6953520Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T05:06:15.7016790Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T05:06:15.7065980Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T05:06:15.7113160Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T05:06:15.7183900Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T05:06:15.7207020Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T05:17:43.3223070Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T05:17:43.5180150Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T05:17:43.5188380Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T05:17:43.5943290Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T05:17:43.6073600Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T05:17:43.6105470Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T05:17:43.6123530Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T05:17:43.6191810Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T05:17:43.8107490Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T05:17:43.8213490Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T05:17:43.8285330Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T05:17:43.8341480Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T05:17:43.8408540Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T05:17:43.8462150Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T05:17:43.8511980Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T05:17:43.8573780Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T05:17:43.8625480Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T05:17:43.8665190Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T05:17:43.8711480Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T05:17:43.8769620Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T05:17:43.8832150Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T05:17:43.8854940Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T05:19:58.2947340Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T05:19:58.5399020Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T05:19:58.5410030Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T05:19:58.6376880Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T05:19:58.6524710Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T05:19:58.6555130Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T05:19:58.6574360Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T05:19:58.6659080Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T05:19:58.8943920Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T05:19:58.9117500Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T05:19:58.9264080Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T05:19:58.9337610Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T05:19:58.9438710Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T05:19:58.9515500Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T05:19:58.9562760Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T05:19:58.9608750Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T05:19:58.9655710Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T05:19:58.9694150Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T05:19:58.9734460Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T05:19:58.9776260Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T05:19:58.9826150Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T05:19:58.9894040Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T05:22:52.8300720Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T05:22:53.0290760Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T05:22:53.0299240Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T05:22:53.0942750Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T05:22:53.1051700Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T05:22:53.1082970Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T05:22:53.1100410Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T05:22:53.1154340Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T05:22:53.2855040Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T05:22:53.2974620Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T05:22:53.3053780Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T05:22:53.3120820Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T05:22:53.3188440Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T05:22:53.3264090Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T05:22:53.3325610Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T05:22:53.3384790Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T05:22:53.3445830Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T05:22:53.3483320Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T05:22:53.3526720Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T05:22:53.3578390Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T05:22:53.3630080Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T05:22:53.3653050Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T05:24:14.9864590Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T05:24:15.2052810Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T05:24:15.2070990Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T05:24:15.3292360Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T05:24:15.3538880Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T05:24:15.3574020Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T05:24:15.3608020Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T05:24:15.3701060Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T05:24:15.7130610Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T05:24:15.7241990Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T05:24:15.7325770Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T05:24:15.7382370Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T05:24:15.7460210Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T05:24:15.7509860Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T05:24:15.7578340Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T05:24:15.7632730Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T05:24:15.7686880Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T05:24:15.7733590Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T05:24:15.7798250Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T05:24:15.7840430Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T05:24:15.7902170Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T05:24:15.7927030Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T05:50:33.3913470Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T05:50:33.6223770Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T05:50:33.6233970Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T05:50:33.6564500Z","@mt":"Fetching list of already executed scripts."}
+{"@t":"2023-01-22T05:50:33.6807480Z","@mt":"No new scripts need to be executed - completing."}
+{"@t":"2023-01-22T05:50:33.6831390Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T05:57:04.9314110Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T05:57:05.1860270Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T05:57:05.1870960Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T05:57:05.2874840Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T05:57:05.2995280Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T05:57:05.3026620Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T05:57:05.3044190Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T05:57:05.3127340Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T05:57:05.7646020Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T05:57:05.7824550Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T05:57:05.7913910Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T05:57:05.7980780Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T05:57:05.8043430Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T05:57:05.8112890Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T05:57:05.8175090Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T05:57:05.8233970Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T05:57:05.8289100Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T05:57:05.8334750Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T05:57:05.8387020Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T05:57:05.8441260Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T05:57:05.8545160Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T05:57:05.8603480Z","@mt":"Migration successful"}
+{"@t":"2023-01-22T06:02:53.1420180Z","@mt":"Logger configured. Starting migration..."}
+{"@t":"2023-01-22T06:02:53.3710040Z","@mt":"Beginning database upgrade"}
+{"@t":"2023-01-22T06:02:53.3719500Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T06:02:53.4481770Z","@mt":"Journal table does not exist"}
+{"@t":"2023-01-22T06:02:53.4610640Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0001_initial_structure.sql"}
+{"@t":"2023-01-22T06:02:53.4651300Z","@mt":"Checking whether journal table exists.."}
+{"@t":"2023-01-22T06:02:53.4672020Z","@mt":"Creating the [app].[MigrationsJournal] table"}
+{"@t":"2023-01-22T06:02:53.4745900Z","@mt":"The [app].[MigrationsJournal] table has been created"}
+{"@t":"2023-01-22T06:02:53.6517890Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0002_change_meeting_comments_edit_date_type_and_add_meeting_comments_view.sql"}
+{"@t":"2023-01-22T06:02:53.6641040Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0003_add_meetings_countries_table.sql"}
+{"@t":"2023-01-22T06:02:53.6716690Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0004_add_meeting_commenting_configurations_table.sql"}
+{"@t":"2023-01-22T06:02:53.6776510Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0005_add_payer_id_to_subcription_details_view.sql"}
+{"@t":"2023-01-22T06:02:53.6857820Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0006_add_member_meeting_groups_view.sql"}
+{"@t":"2023-01-22T06:02:53.6908790Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0007_add_meeting_attendees_view.sql"}
+{"@t":"2023-01-22T06:02:53.6970220Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0008_add_meeting_details_view.sql"}
+{"@t":"2023-01-22T06:02:53.7050300Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0009_add_mock_emails_table.sql"}
+{"@t":"2023-01-22T06:02:53.7109560Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0010_add_member_meetings_view.sql"}
+{"@t":"2023-01-22T06:02:53.7169240Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0011_add_likes_count_to_meeting_comments_table.sql"}
+{"@t":"2023-01-22T06:02:53.7223330Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0012_add_likes_count_to_meeting_comments_view.sql"}
+{"@t":"2023-01-22T06:02:53.7268420Z","@mt":"Executing Database Server script '{0}'","0":"1_0_0_0.0013_add_meeting_member_comment_likes_table.sql"}
+{"@t":"2023-01-22T06:02:53.7340330Z","@mt":"Upgrade successful"}
+{"@t":"2023-01-22T06:02:53.7365110Z","@mt":"Migration successful"}

@@ -2064,7 +2064,7 @@ List of technologies, frameworks and libraries used for implementation:
 - Run database migrations using **MigrateDatabase** NUKE target:
 
 ```shell
-.\build MigrateDatabase "connection_string"
+.\build MigrateDatabase --DatabaseConnectionString "connection_string"
 ```
 
 *"connection_string"* - connection string to your database

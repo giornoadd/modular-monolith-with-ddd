@@ -33,11 +33,11 @@ public partial class Build
             CopyFile(createDatabaseFile, createDatabaseFileTarget, FileExistsPolicy.Overwrite);
         });
 
-    const string SqlServerPassword = "123qwe!@#QWE";
+    const string SqlServerPassword = "MyPass@word!";
 
-    const string SqlServerUser = "sa";
+    const string SqlServerUser = "SA";
 
-    const string SqlServerPort = "1401";
+    const string SqlServerPort = "1433";
 
     Target PrepareSqlServer => _ => _
         .DependsOn(PrepareInputFiles)
@@ -45,12 +45,13 @@ public partial class Build
         {
             DockerTasks.DockerRun(s => s
                 .EnableRm()
-                .SetName("sql-server-db")
-                .SetImage("mcr.microsoft.com/mssql/server:2019-latest")
+                .SetName("sqldb")
+                .SetImage("giornoadd.com/azure-sql-edge-arm64:lastest")
                 .SetEnv(
-                    $"SA_PASSWORD={SqlServerPassword}",
-                    "ACCEPT_EULA=Y",
-                    "MSSQL_PID=Express")
+                    $"MSSQL_SA_PASSWORD={SqlServerPassword}",
+                    "ACCEPT_EULA=1",
+                    "MSSQL_USER=SA",
+                    "MSSQL_PID=Developer")
                 .SetPublish($"{SqlServerPort}:1433")
                 .SetMount($"type=bind,source=\"{InputFilesDirectory}\",target=/{InputFilesDirectoryName},readonly")
                 .EnableDetach());
@@ -65,7 +66,7 @@ public partial class Build
         {
             DockerTasks.DockerExec(s => s
                 .EnableInteractive()
-                .SetContainer("sql-server-db")
+                .SetContainer("sqldb")
                 .SetCommand("/bin/sh")
                 .SetArgs("-c", $"./opt/mssql-tools/bin/sqlcmd -d master -i ./{InputFilesDirectoryName}/{CreateDatabaseScriptName} -U {SqlServerUser} -P {SqlServerPassword}"));
         });
@@ -84,7 +85,7 @@ public partial class Build
 
     AbsolutePath DbUpMigratorPath => OutputDbUbMigratorBuildDirectory / "DatabaseMigrator.dll";
 
-    readonly string MyMeetingsDatabaseConnectionString = $"Server=127.0.0.1,{SqlServerPort};Database=MyMeetings;User={SqlServerUser};Password={SqlServerPassword}";
+    readonly string MyMeetingsDatabaseConnectionString = $"Server=127.0.0.1,{SqlServerPort};Database=MyMeetings;User={SqlServerUser};Password={SqlServerPassword};TrustServerCertificate=True;Encrypt=false";
 
     Target RunDatabaseMigrations => _ => _
         .DependsOn(CompileDbUpMigratorForIntegrationTests)

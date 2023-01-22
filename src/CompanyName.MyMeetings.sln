@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
+# Visual Studio Version 17
 VisualStudioVersion = 17.4.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.MyMeetings.API", "API\CompanyName.MyMeetings.API\CompanyName.MyMeetings.API.csproj", "{49D08B64-AC8E-4607-820F-8A0B989CFD33}"

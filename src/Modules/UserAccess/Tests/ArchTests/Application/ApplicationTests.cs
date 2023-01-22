@@ -107,12 +107,14 @@ namespace CompanyName.MyMeetings.Modules.UserAccess.ArchTests.Application
         [Test]
         public void Validators_Should_Not_Be_Public()
         {
-            var types = Types.InAssembly(ApplicationAssembly)
+            var result = Types.InAssembly(ApplicationAssembly)
                 .That()
                 .Inherit(typeof(AbstractValidator<>))
-                .Should().NotBePublic().GetResult().FailingTypes;
+                .Should()
+                .NotBePublic()
+                .GetResult();
 
-            AssertFailingTypes(types);
+            AssertArchTestResult(result);
         }
 
         [Test]
